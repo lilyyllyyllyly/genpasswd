@@ -12,7 +12,7 @@ make sure you have gcc installed!
 
 you probably want to put it in your PATH (somewhere like `~/.local/bin/genpasswd` should be fine, if that directory is in your PATH)
 
-### Usage
+## Usage
 ```
 genpasswd SIZE
 ```
@@ -21,7 +21,7 @@ genpasswd SIZE
 SIZE is the amount of digits of the generated password, must be an integer between 1 and 200
 (completely arbitrary limit because having no limit seemed like it could lead to problems and most sites dont accept passwords that long anyways lol)
 
-#### Example
+### Example
 ```
 > genpasswd 25
 U#mKl<EpDQ3Zl.w(mxAf\//kk
