@@ -15,7 +15,7 @@ simple password generator written in C, originally made by [lilyyllyyllyly](http
 ```
 git clone https://github.com/64XN/genpasswd
 cd genpasswd
-make -j$(nproc)
+make
 ```
 
 you probably want to put it in your PATH (somewhere like `~/.local/bin/genpasswd` should be fine, if that directory is in your PATH)
