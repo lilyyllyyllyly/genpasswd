@@ -2,6 +2,8 @@
 
 simple password generator written in C, originally made by [lilyyllyyllyly](https://github.com/lilyyllyyllyly), turned into a cryptographically secure password generator by me ([64XN](https://github.com/64XN))
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/64XN/genpasswd/main.svg)](https://results.pre-commit.ci/latest/github/64XN/genpasswd/main)
+
 ## Installation
 
 ### Dependencies

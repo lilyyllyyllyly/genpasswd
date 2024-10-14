@@ -8,6 +8,12 @@
 
 #define BUFFER_SIZE 8192
 
+const char *__scudo_default_options() {
+    return "dealloc_type_mismatch=true:zero_contents=true:pattern_fill_"
+           "contents=true:delete_size_mismatch=true:release_to_os_interval_ms=-"
+           "1";
+}
+
 /*
  * Linked list of all calls to malloc.
  */

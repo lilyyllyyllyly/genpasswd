@@ -15,12 +15,19 @@ INCLUDES = \
 
 CC = clang
 
-CC_FLAGS = -march=native -Wall -Werror -Wextra -Wfloat-equal -Wswitch-default \
-	   -Wswitch-enum -Wno-unused-parameter -Wno-implicit-fallthrough -g \
-	   -pthread -O3 -fsigned-char -flto=thin -pipe -fsanitize=scudo
-LNK_FLAGS = -fuse-ld=lld -lsodium -ltcl -Wl,-z,nodlopen -Wl,-z,noexecstack \
+MAKEFLAGS = -j$(nproc)
+
+CC_FLAGS = -target x86_64-unknown-linux-gnu -std=c17 -ftrapv -march=native -masm=intel \
+	-Wall -Werror -Wextra -Wfloat-equal -Wswitch-default \
+	-fstrict-flex-arrays=3 -mshstk \
+	-Wswitch-enum -fsanitize-undefined-trap-on-error -Wno-unused-parameter -Wno-implicit-fallthrough -fvisibility=hidden \
+	-pthread -O3 -fsigned-char -flto=thin -pipe -fsanitize=scudo,cfi,bounds,integer \
+	-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-clash-protection -fstack-protector-all \
+        -fPIE -fcf-protection=full
+
+LNK_FLAGS = -fuse-ld=lld -lsodium -ltcl -Wl,-z,nodlopen -Wl,-z,noexecstack -Wl,-z,separate-code \
 	    -Wl,-z,relro -Wl,-z,now \
-	    -Wl,--as-needed -Wl,--no-copy-dt-needed-entries
+	    -Wl,--as-needed -Wl,--no-copy-dt-needed-entries -fPIC -rtlib=compiler-rt -pie
 
 # All .o files go to build dir.
 C_OBJ = $(SOURCE:%.c=$(BUILD_DIR)/%.o)
