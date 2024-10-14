@@ -1,29 +1,32 @@
 # genpasswd
-simple password generator written in C
+
+simple password generator written in C, originally made by [lilyyllyyllyly](https://github.com/lilyyllyyllyly), turned into a cryptographically secure password generator by me ([64XN](https://github.com/64XN))
 
 ## Installation
-either grab the [release](https://github.com/lilyyllyyllyly/genpasswd/releases/tag/v1.0.0) or run the following commands to build it yourself:
+
+### Dependencies
+
+- Clang >=18
+- libsodium
+- tcl
+
 ```
-git clone https://github.com/lilyyllyyllyly/genpasswd
+git clone https://github.com/64XN/genpasswd
 cd genpasswd
-gcc pass.c -o genpasswd
+make -j$(nproc)
 ```
-make sure you have gcc installed!
 
 you probably want to put it in your PATH (somewhere like `~/.local/bin/genpasswd` should be fine, if that directory is in your PATH)
 
 ## Usage
-```
-genpasswd SIZE
-```
-(if you compiled it with the name genpasswd/got the release, then put it in your PATH)
 
-SIZE is the amount of digits of the generated password, must be an integer between 1 and 200
-(completely arbitrary limit because having no limit seemed like it could lead to problems and most sites dont accept passwords that long anyways lol)
+Simply execute `genpasswd`
 
 ### Example
+
 ```
-> genpasswd 25
-U#mKl<EpDQ3Zl.w(mxAf\//kk
+> genpasswd
+Cryptographic engine started successfully!
+Result pre-scramble (HEXADECIMAL): 71cb637e88fa9f097af229636f49af90f75e2828ed2e2784c683167a8c2d9f40553fef8643c11d2af722783048fd9bc8d6e32f251a6472d827519b309e7f5889
+Result scrambled for password usage (Base64): cctjfoj6nwl68iljb0mvkPdeKCjtLieExoMWeowtn0BVP--GQ8EdKvcieDBI_ZvI1uMvJRpkctgnUZswnn9YiQ==
 ```
-(notice how the password is 25 characters long)
