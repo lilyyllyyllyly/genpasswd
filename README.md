@@ -1,6 +1,8 @@
 # genpasswd
 simple password generator written in C
 
+for a cryptographically secure version use [xmm16's fork](https://github.com/xmm16/genpasswd)!
+
 ## Installation
 either grab the [release](https://github.com/lilyyllyyllyly/genpasswd/releases/tag/v1.0.0) or run the following commands to build it yourself:
 ```
